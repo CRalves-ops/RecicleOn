@@ -25,7 +25,7 @@ const register = async (req, res, next) => {
 
         const usuario = resultado.rows[0]
         const token = jwt.sign({ id: usuario.id}, ProcessingInstruction.env.JWT_SECRET, {
-            expriresIn: '7d'
+            expiresIn: '7d'
         });
 
         res.status(201).json({ usuario, token});
