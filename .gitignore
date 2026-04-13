@@ -1,0 +1,16 @@
+# Variáveis de ambiente — NUNCA commitar
+.env
+ 
+# Node
+node_modules/
+npm-debug.log*
+ 
+# Expo
+.expo/
+dist/
+web-build/
+ 
+# Sistema
+.DS_Store
+*.log
+ 
