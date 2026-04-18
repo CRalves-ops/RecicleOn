@@ -9,7 +9,7 @@ const createTables = async () => {
                 nome    VARCHAR(100) NOT NULL,\
                 email   VARCHAR(150) UNIQUE NOT NULL,\
                 senha_hash  VARCHAR(255) NOT NULL,\
-                pontos  INTEGER DEFALT 0,\
+                pontos  INTEGER DEFAULT 0,\
                 criado_em   TIMESTAMP DEFAULT NOW()\
             );\
         ');

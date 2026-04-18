@@ -21,7 +21,7 @@ app.get('/api/health', (req, res) => {
 // tratamento de erros
 app.use(errorHandler);
 
-const PORT = ProcessingInstruction.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(' RecicleON API rodando em htpt://localhost:${PORT}');
+    console.log(' RecicleON API rodando em http://localhost:${PORT}');
 });
