@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     StyleSheet,
     ActivityIndicator,
-    KayboardAvoidingView,
+    KeyboardAvoidingView,
     Platform,
     ScrollView,
 } from 'react-native';
@@ -27,9 +27,9 @@ export default function LoginScreen({ navigation}) {
     };
 
     return (
-        <KayboardAvoidingView
+        <KeyboardAvoidingView
             style = {styles.container}
-            behavior = {Platform.OS === 'ios' ? 'padding' : underfined}
+            behavior = {Platform.OS === 'ios' ? 'padding' : undefined}
         >
             <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
 
@@ -57,11 +57,11 @@ export default function LoginScreen({ navigation}) {
                     <TextInput
                         style={styles.input}
                         placeholder = 'seu_email@gmail.com'
-                        placeholderTextColor = {colors.textMudet}
-                        KeyboardType = 'email-address'
+                        placeholderTextColor = {colors.textMuted}
+                        keyboardType = 'email-address'
                         autoCapitalize = 'none'
                         value= {email}
-                        onChargeText = {setEmail}
+                        onChangeText = {setEmail}
                     />
 
                     {/* Senha */}
@@ -73,7 +73,7 @@ export default function LoginScreen({ navigation}) {
                             placeholderTextColor = {colors.textMuted}
                             secureTextEntry = {!mostrarSenha}
                             value = {senha}
-                            onChargeText = {setSenha}
+                            onChangeText = {setSenha}
                         />
                         <TouchableOpacity
                             style = {styles.eyeBtn}
@@ -93,7 +93,7 @@ export default function LoginScreen({ navigation}) {
 
                     {/* Botão Entrar */}
                     <TouchableOpacity
-                        styles = {[styles.btnPrimary, carregando && styles.btnDisabled]}
+                        style = {[styles.btnPrimary, carregando && styles.btnDisabled]}
                         onPress = {handleLogin}
                         disabled = {carregando}
                     >
@@ -113,7 +113,7 @@ export default function LoginScreen({ navigation}) {
                     </View>
                 </View>
             </ScrollView>
-        </KayboardAvoidingView>
+        </KeyboardAvoidingView>
     );
 }
 
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
 
     // Hero
     hero: {
-        backgroundColor: colors.primayDark,
+        backgroundColor: colors.primaryDark,
         paddingTop: 60,
         paddingBottom: 48,
         alignItems: 'center',
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     logoCircle: {
         width: 72,
         height: 72,
-        borderRadiuns: 36,
+        borderRadius: 36,
         backgroundColor: 'rgba(225,255,255,0.18)',
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,0.35)',
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     },
     cardSubtitle : {
         ...typography.body,
-        color : color.textSecondary,
+        color : colors.textSecondary,
         marginBottom: spacing.lg,
         lineHeight: 20,
     },

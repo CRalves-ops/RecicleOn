@@ -8,7 +8,7 @@ export const colors = {
     primaryLight: '#E1F5EE',
     primaryBorder: '#9FE1CB',
 
-        // Neutros
+    // Neutros
     white: '#FFFFFF',
     background: '#F0F7F4',
     textPrimary: '#085041',

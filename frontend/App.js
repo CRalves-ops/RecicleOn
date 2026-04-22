@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigatior } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 
-import { AuthProvider } from './src/contexts/authContext';
-import LoginScreen from './src/screens/loginscreen';
+import { AuthProvider } from './src/contexts/AuthContext';
+import LoginScreen from './src/screens/Loginscreen';
 
 // Proximas telas que forem criadas seram adicionadas aqui:
 // RegisterScreen
