@@ -1,16 +1,16 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigatior } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 
 import { AuthProvider } from './src/contexts/AuthContext';
-import LoginScreen from './src/screens/Loginscreen';
+import LoginScreen from './src/screens/LoginScreen';
 
 // Proximas telas que forem criadas seram adicionadas aqui:
 // RegisterScreen
 // HomeScreen
 
-const Stack = createNativeStackNavigatior();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (

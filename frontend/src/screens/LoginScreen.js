@@ -13,7 +13,7 @@ import {
 import { colors, spacing, radius, typography } from '../theme';
 import { useAuth } from '../contexts/AuthContext';
 
-export default function LoginScreen({ navigation}) {
+export default function LoginScreen({ navigation }) {
     const { login, carregando, erro } = useAuth();
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
