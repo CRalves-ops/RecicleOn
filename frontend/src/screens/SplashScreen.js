@@ -5,7 +5,7 @@ import { colors, typography, spacing, radius } from "../theme";
 
 export default function SplashScreen({ navigation }) {
     return (
-        <SafeAreaView style= {Styles.container}>
+        <SafeAreaView style= {styles.container}>
             <View style = {styles.content}>
 
                 {/* Área da Logo e Título */}
@@ -19,14 +19,14 @@ export default function SplashScreen({ navigation }) {
                 </View>
 
                 {/* Área dos Botões */}
-                <View styles = {styles.buttonContainer}>
+                <View style = {styles.buttonContainer}>
 
                     {/* Botão Entrar (Leva para o Login)*/}
                     <TouchableOpacity
                         style = {styles.buttonEntry}
                         onPress = {() => navigation.navigate('Login')}
                     >
-                        <text style = {styles.buttonEntryText}>Entrar</text>
+                        <Text style = {styles.buttonEntryText}>Entrar</Text>
                     </TouchableOpacity>
 
                     {/* Link para o Cadastro (Leva para tela de cadastro)*/}
@@ -34,7 +34,7 @@ export default function SplashScreen({ navigation }) {
                         style = {styles.signUpLink}
                         onPress = {() => navigation.navigate('Cadastro')}
                     >
-                        <Text style = {styles.signUpLink}>Cadastrar-se</Text>
+                        <Text style = {styles.signUpLinkText}>Cadastrar-se</Text>
                     </TouchableOpacity>
                 </View>
             </View>
