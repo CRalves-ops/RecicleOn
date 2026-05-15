@@ -9,9 +9,17 @@ import {
     KeyboardAvoidingView,
     Platform,
     ScrollView,
+    Image,
 } from 'react-native';
+
+// Importando nosso tema base
 import { colors, spacing, radius, typography } from '../theme';
 import { useAuth } from '../contexts/AuthContext';
+
+
+// Importando nossos Componentes do Design System
+import CustomInput from '../components/CustomInput';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function LoginScreen({ navigation }) {
     const { login, carregando, erro } = useAuth();
@@ -33,14 +41,14 @@ export default function LoginScreen({ navigation }) {
         >
             <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
 
-                {/* Hero */}
+                {/* Hero  - Fundo Verde com a logo */}
                 <View style={styles.hero}>
-                    <View style={styles.logoCircle}>
-                        {/* Substituir por <Image source={require('../assets/logo.png')} /> quando tiver a logo*/}
-                        <Text style = {styles.logoText}> ♻ </Text>
-                    </View>
-                    <Text style={styles.appName}>RecicleON</Text>
-                    <Text style={styles.tagline}>
+                    <Image
+                        source = {require('../components/logos/logo_branco.png')}
+                        style = {styles.logo}
+                        resizeMode = "contain"
+                    />
+                    <Text style = {styles.tagline}>
                         Reciclagem, informação e {'\n'} sustentabilidade para Fortaleza
                     </Text>
                 </View>
@@ -53,24 +61,18 @@ export default function LoginScreen({ navigation }) {
                     </Text>
 
                     {/* E-mail */}
-                    <Text style={styles.label}>E-mail</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder = 'seu_email@gmail.com'
-                        placeholderTextColor = {colors.textMuted}
-                        keyboardType = 'email-address'
-                        autoCapitalize = 'none'
-                        value= {email}
+                    <CustomInput
+                        label = "E-mail"
+                        placeholder = "seu_email@gmail.com"
+                        value = {email}
                         onChangeText = {setEmail}
                     />
 
                     {/* Senha */}
-                    <Text style = {styles.label}>Senha</Text>
-                    <View style = {styles.inputWrapper}>
-                        <TextInput
-                            style = {[styles.input, styles.inputWithIcon]}
-                            placeholder = '········'
-                            placeholderTextColor = {colors.textMuted}
+                    <View style = {styles.passwordWrapper}>
+                        <CustomInput
+                            label = "Senha"
+                            placeholder = "········"
                             secureTextEntry = {!mostrarSenha}
                             value = {senha}
                             onChangeText = {setSenha}
@@ -79,7 +81,7 @@ export default function LoginScreen({ navigation }) {
                             style = {styles.eyeBtn}
                             onPress = {() => setMostrarSenha((v) => !v)}
                         >
-                            <Text style = {styles.eyeIcon}>{mostrarSenha ? '🙈' : '🙉'}</Text>
+                            <Text style = {styles.eyeIcon}>{mostrarSenha ? '🙉' : '🙈'}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -92,23 +94,18 @@ export default function LoginScreen({ navigation }) {
                     {erro ? <Text style = {styles.erroText}>{erro}</Text> : null}
 
                     {/* Botão Entrar */}
-                    <TouchableOpacity
-                        style = {[styles.btnPrimary, carregando && styles.btnDisabled]}
+                    <PrimaryButton
+                        title = {carregando ? "Carregando..." : "Entrar"}
                         onPress = {handleLogin}
-                        disabled = {carregando}
-                    >
-                        {carregando ? (
-                            <ActivityIndicator color = {colors.white} />
-                        ) : (
-                            <Text style = {styles.btnPrimaryText}>Entrar</Text>
-                        )}
-                    </TouchableOpacity>
+                        // Passamos uma opacidade menor caso esteja carregando
+                        style = {carregando ? { opacity: 0.7 } : {}}
+                    />
 
                     {/* cadastro */}
                     <View style = {styles.signupRow}>
-                        <Text style = {styles.signupText}>Não tem conta ?</Text>
-                        <TouchableOpacity onPress = {() => navigation.navigate('register')}>
-                            <Text style = {styles.signupLink}>Criar conta</Text>
+                        <Text style = {styles.signupText}>Não tem conta?</Text>
+                        <TouchableOpacity onPress = {() => navigation.navigate('Cadastro')}>
+                            <Text style = {styles.signupLink}> Criar conta</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -120,7 +117,7 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.background,
+        backgroundColor: colors.primary,
     },
     scroll: {
         flexGrow: 1,
@@ -128,51 +125,43 @@ const styles = StyleSheet.create({
 
     // Hero
     hero: {
-        backgroundColor: colors.primaryDark,
-        paddingTop: 60,
-        paddingBottom: 48,
+        backgroundColor: colors.primary,
+        paddingTop: 80,
+        paddingBottom: 60,
         alignItems: 'center',
         gap: spacing.sm,
     },
-    logoCircle: {
-        width: 72,
-        height: 72,
-        borderRadius: 36,
-        backgroundColor: 'rgba(225,255,255,0.18)',
-        borderWidth: 2,
-        borderColor: 'rgba(255,255,255,0.35)',
-        alignItems: 'center',
-        justifyContent: 'center',
+    logo: {
+        width: 200,
+        height: 100,
         marginBottom: spacing.xs,
-    },
-    logoText: {
-        fontSize: 32,
-    },
-    appName: {
-        ...typography.body,
-        color: colors.white,
     },
     tagline: {
         ...typography.body,
-        color: 'rgba(255,255,255,0.78)',
+        color: colors.primaryLight,
         textAlign: 'center',
         lineHeight: 20,
     },
-
-    //card
+    // Card
     card: {
         backgroundColor: colors.white,
-        borderTopLeftRadius: radius.xl,
-        borderTopRightRadius: radius.xl,
-        marginTop: -20,
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        marginTop: -30,
         flex: 1,
         paddingHorizontal: spacing.lg,
         paddingTop: spacing.xl,
         paddingBottom: spacing.xl,
+        elevation: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: -3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
     },
     cardTitle: {
-        ...typography.h2,
-        color: colors.primaryDeep,
+        ...typography.h1,
+        fontSize : 28,
+        color: colors.primary,
         marginBottom: spacing.xs, 
     },
     cardSubtitle : {
@@ -182,50 +171,31 @@ const styles = StyleSheet.create({
         lineHeight: 20,
     },
 
-    // Inputs
-    label: {
-    ...typography.label,
-    color: colors.primaryDark,
-    marginBottom: 6,
-    },
-    input: {
-        height: 48,
-        backgroundColor: colors.inputBg,
-        borderWidth: 1,
-        borderColor: colors.primaryBorder,
-        borderRadius: radius.md,
-        paddingHorizontal: spacing.md,
-        ...typography.body,
-        color: colors.textPrimary,
-        marginBottom: spacing.md,
-    },
-    inputWrapper: {
-        position: 'relative',
-    },
-    inputWithIcon: {
-        paddingRight: 44,
+    // Wrapper para posicionar o olhinho corretamente em cima do CustomInput
+    passwordWrapper: {
+        position : 'relative'
     },
     eyeBtn: {
         position: 'absolute',
-        right: 12,
-        top: 12,
+        right: 15,
+        top: 29, // Ajuste para ficar alinhado com a caixa de texto (Abaixo do label)
+        padding: 5,
     },
     eyeIcon: {
-        fontSize: 16,
+        fontSize: 18,
     },
-    
+
     // Esqueceu a senha
     forgotWrapper: {
         alignSelf: 'flex-end',
-        marginTop: -spacing.sm,
-        marginBottom: spacing.md,
+        marginTop: -10,
+        marginBottom: spacing.lg,
     },
     forgotText: {
         ...typography.caption,
-        color: colors.primary,
-        fontWeight: '500',
+        color: colors.primaryDark,
+        fontWeight: '600',
     },
-    
     // Erro
     erroText: {
         ...typography.caption,
@@ -233,29 +203,11 @@ const styles = StyleSheet.create({
         marginBottom: spacing.sm,
         textAlign: 'center',
     },
-    
-    // Botão primário
-    btnPrimary: {
-        height: 52,
-        backgroundColor: colors.actionBlue,
-        borderRadius: radius.md,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: spacing.xs,
-    },
-    btnDisabled: {
-        opacity: 0.7,
-    },
-    btnPrimaryText: {
-        ...typography.h3,
-        color: colors.white,
-    },
-    
     // Cadastro
     signupRow: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: spacing.lg,
+        marginTop: spacing.xl,
     },
     signupText: {
         ...typography.body,
@@ -264,7 +216,6 @@ const styles = StyleSheet.create({
     signupLink: {
         ...typography.body,
         color: colors.primary,
-        fontWeight: '500',
-        textDecorationLine: 'underline',
+        fontWeight: 'bold',
     },
 });
