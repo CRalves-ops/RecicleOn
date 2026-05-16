@@ -28,6 +28,10 @@ export default function LoginScreen({ navigation }) {
     const [mostrarSenha, setMostrarSenha] = useState(false);
 
     const handleLogin = async () => {
+        if (!email || !senha) {
+            alert("Por favor Preencha todos os campos!")
+        }
+
         const sucesso = await login(email, senha);
         if (sucesso) {
             navigation.replace('Home');
