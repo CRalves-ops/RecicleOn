@@ -32,11 +32,9 @@ export const AuthProvider = ({ children }) => {
 
         try {
             const { data } = await authService.register(nome, email, senha);
-            setAuthToken(data.token);
-            setUsuario(data.usuario);
             return true;
 
-        } catch {
+        } catch (err) {
             const msg = err.response?.data?.erro || 'Erro ao criar conta.';
             setErro(msg);
             return false;
