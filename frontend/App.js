@@ -8,13 +8,9 @@ import { AuthProvider } from './src/contexts/AuthContext';
 // Importação das Telas
 import SplashScreen from './src/screens/SplashScreen';
 import LoginScreen from './src/screens/LoginScreen';
-
+import CadastroScreen from './src/screens/CadastroScreen';
 const Stack = createNativeStackNavigator();
 
-// Placeholder para não dar erro enquanto não criar o arquivo
-function CadastroPlaceholder() {
-    return null;
-}
 
 export default function App() {
     return (
@@ -33,9 +29,10 @@ export default function App() {
                     {/* Tela de login */}
                     <Stack.Screen name = "Login" component = {LoginScreen} />
 
-                    {/* Proximas telas */}
-                    <Stack.Screen name = "Cadastro" component = {CadastroPlaceholder} />
+                    {/* Tela de Cadastro */}
+                    <Stack.Screen name = "Cadastro" component = {CadastroScreen} />
                     
+                    {/* Proximas telas */}
                 </Stack.Navigator>
             </NavigationContainer>
         </AuthProvider>
