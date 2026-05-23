@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import {
     View,
     Text,
@@ -8,6 +8,7 @@ import {
     Platform,
     ScrollView,
     Image,
+    Alert,
 } from 'react-native';
 
 // Importando o nosso rema e contexto
@@ -18,7 +19,7 @@ import { useAuth } from "../contexts/AuthContext";
 import CustomInput from "../components/CustomInput";
 import PrimaryButton from "../components/PrimaryButton";
 
-export default function CadastroScrenn({ navigation }) {
+export default function CadastroScreen({ navigation }) {
     const { register, carregando, erro } = useAuth();
 
     // Estados do formulário
@@ -30,7 +31,7 @@ export default function CadastroScrenn({ navigation }) {
     const handleCadastro = async () => {
         // 1. Validação básica de frontend
         if (!nome || !email || !senha ) {
-            alert("Por favor, preencha todos os campos!");
+            Alert.alert("Por favor, preencha todos os campos!");
             return;
         }
 
@@ -39,7 +40,17 @@ export default function CadastroScrenn({ navigation }) {
 
         // 3. Se o backend retornar sucesso (201), navega para a Login
         if (sucesso) {
-            navigation.navigate('Login');
+            Alert.alert(
+                "Conta Criada !",
+                "Sua conta foi criada com sucesso. Faça o login para continuar.",
+                [
+                    {
+                        text: "OK",
+                        // A navegação só acontece DEPOIS que você clica no botão OK do alerta!
+                        onPress: () => navigation.navigate('Login')
+                    }
+                ]
+            )
         }
     };
 
@@ -178,7 +189,13 @@ const styles = StyleSheet.create({
         color : colors.primary,
         marginBottom : spacing.xs,
     },
-
+    cardSubtitle: { // CORRIGIDO: Este estilo estava faltando!
+        ...typography.body,
+        color: colors.textSecondary,
+        marginBottom: spacing.lg,
+        lineHeight: 20,
+    },
+    
     // Wrapper para posicionar o olhinho corretamente em cima do CustomInput
     passwordWrapper : {
         position : "relative",
