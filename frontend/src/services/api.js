@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
 const api = axios.create({
-    baseURL: '${API_URL}/api',
+    baseURL: `${API_URL}/api`,
     timeout: 10000,
     headers: {'Content-Type': 'application/json' },
 });
@@ -11,9 +11,9 @@ const api = axios.create({
 // Injeta o token em todas as requisições autenticadas
 export const setAuthToken = (token) => {
     if (token) {
-        api.defaults.headers.common['Authorization'] = 'Bearer ${token}';
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {
-        delete api.defalts.headers.common['Authorization'];
+        delete api.defaults.headers.common['Authorization'];
     }
 };
 
