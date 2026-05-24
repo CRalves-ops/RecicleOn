@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     StyleSheet,
 } from 'react-native';
-import { colors, typography, spacing } from '../theme';
+import { colors, typography, spacing } from '../../theme';
 
 export default function TopTabSwitcher({ activeTab, setActiveTab }) {
     return (

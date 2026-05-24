@@ -4,7 +4,7 @@ import {
     Image,
     StyleSheet
 } from 'react-native';
-import { colors, spacing } from "../theme";
+import { colors, spacing } from "../../theme";
 
 export default function HeaderLogo() {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { colors, typography, spacing, radius } from '../theme';
+import { colors, typography, spacing, radius } from '../../theme';
 
 export default function CustomInput({ label, placeholder, value, onChangeText, secureTextEntry }) {
     return (

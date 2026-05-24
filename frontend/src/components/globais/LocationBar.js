@@ -5,7 +5,7 @@ import {
     StyleSheet
 } from 'react-native';
 import { Feather } from '@expo/vector-icons'; // Biblioteca de ícones do Expo
-import { colors, spacing, radius, typography } from "../theme";
+import { colors, spacing, radius, typography } from "../../theme";
 
 export default function LocationBar({ location = "localização"}) {
     return (

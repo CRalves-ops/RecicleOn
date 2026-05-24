@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { colors, typography, spacing, radius} from '../theme';
+import { colors, typography, spacing, radius} from '../../theme';
 
 export default function PrimaryButton({ title, onPress, style}) {
     return (
