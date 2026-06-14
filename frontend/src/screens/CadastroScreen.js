@@ -16,8 +16,8 @@ import { colors, spacing, typography } from '../theme';
 import { useAuth } from "../contexts/AuthContext";
 
 // Nossos componentes
-import CustomInput from "../components/CustomInput";
-import PrimaryButton from "../components/PrimaryButton";
+import CustomInput from "../components/globais/CustomInput";
+import PrimaryButton from "../components/globais/PrimaryButton";
 
 export default function CadastroScreen({ navigation }) {
     const { register, carregando, erro } = useAuth();

@@ -4,7 +4,7 @@ import { authService, setAuthToken } from '../services/api';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [usuario, serUsuario] = useState(null);
+    const [usuario, setUsuario] = useState(null);
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState(null);
 

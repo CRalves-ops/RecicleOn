@@ -18,8 +18,8 @@ import { useAuth } from '../contexts/AuthContext';
 
 
 // Importando nossos Componentes do Design System
-import CustomInput from '../components/CustomInput';
-import PrimaryButton from '../components/PrimaryButton';
+import CustomInput from '../components/globais/CustomInput';
+import PrimaryButton from '../components/globais/PrimaryButton';
 
 export default function LoginScreen({ navigation }) {
     const { login, carregando, erro } = useAuth();
@@ -29,12 +29,15 @@ export default function LoginScreen({ navigation }) {
 
     const handleLogin = async () => {
         if (!email || !senha) {
-            alert("Por favor Preencha todos os campos!")
+            alert("Por favor Preencha todos os campos!");
+            return;
         }
 
+        console.log("Tentando fazer login no backend...")
         const sucesso = await login(email, senha);
+        console.log("Retorno do AuthContext:", sucesso)
         if (sucesso) {
-            navigation.replace('Home');
+            navigation.replace('MainTabs');
         }
     };
 

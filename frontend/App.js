@@ -9,6 +9,10 @@ import { AuthProvider } from './src/contexts/AuthContext';
 import SplashScreen from './src/screens/SplashScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import CadastroScreen from './src/screens/CadastroScreen';
+
+// Importando nossa barra de navegação
+import TabRoutes from './src/routes/TabRoutes';
+
 const Stack = createNativeStackNavigator();
 
 
@@ -32,7 +36,9 @@ export default function App() {
                     {/* Tela de Cadastro */}
                     <Stack.Screen name = "Cadastro" component = {CadastroScreen} />
                     
-                    {/* Proximas telas */}
+                    {/* Adicionando as rotas Principais */}
+                    <Stack.Screen name = "MainTabs" component = {TabRoutes} />   
+                                   
                 </Stack.Navigator>
             </NavigationContainer>
         </AuthProvider>
