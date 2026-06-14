@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     card: {
         width: 60,
         height: 70,
-        backgroundColor: #e4dfdf, // Cinza claro padrão
+        backgroundColor: '#e4dfdf', // Cinza claro padrão
         borderRadius: radius.md,
         alignItems: 'center',
         justifyContent: 'center',

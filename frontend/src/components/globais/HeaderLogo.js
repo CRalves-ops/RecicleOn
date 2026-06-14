@@ -10,7 +10,7 @@ export default function HeaderLogo() {
     return (
         <View style = {styles.container}>
             <Image
-                source = {require('../components/logos/logo_verde.png')}
+                source = {require('../logos/logo_verde.png')}
                 style = {styles.logo}
                 resizeMode = "contain"
             />

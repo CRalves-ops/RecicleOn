@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet , ScrollView, FlatList} from 'react-native';
 
 // Importando nossos componentes modulares
@@ -61,7 +61,7 @@ export default function HomeScreen() {
                     {/* Legenda do calendário */}
                     <View style = {styles.legendRow}>
                         <View style = {styles.legendDot} />
-                        <Text style = {stykes.legendText}>Dia de coleta na sua rua!</Text>
+                        <Text style = {styles.legendText}>Dia de coleta na sua rua!</Text>
                     </View>
                 </View>
             </View>
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
         ...typography.body,
         color : colors.textSecondary,
         lineHeight : 20,
+        marginBottom : 30,
     },
 
     calendarBox : {
