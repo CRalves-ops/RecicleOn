@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
         } catch (err) {
             const msg = err.response?.data?.erro || 'Erro ao fazer login.';
-            serErro(msg);
+            setErro(msg);
 
         } finally {
             setCarregando(false);
